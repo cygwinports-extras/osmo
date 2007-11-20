@@ -1,0 +1,21 @@
+diff -urN -x CYGWIN-PATCHES -x 'aclocal.m4*' -x autom4te.cache -x config.cache -x config.log -x config.status -x config.h -x config.h.in -x ABOUT-NLS -x Makefile.in.in -x Makevars.template -x '*SlackBuild*' -x '*.egg-info' -x '*.class' -x '*.pyc' -x '*.mo' -x '*.gmo' -x '*.orig' -x '*.rej' -x '*.spec' -x '*.temp' -x '*~' -x '*.stackdump' -x COPYING -x INSTALL -x compile -x config-ml.in -x config.guess -x config.sub -x depcomp -x elisp-comp -x install-sh -x ltmain.sh -x mdate-sh -x missing -x mkinstalldirs -x py-compile -x symlink-tree -x texinfo.tex -x ylwrap -x config.rpath -x Makefile.in -x makefile.in -x configure -x omf.make -x xmldocs.make -x gnome-doc-utils.make -x gnome-doc-utils.m4 -x intltool.m4 -x intltool-extract -x intltool-extract.in -x intltool-merge -x intltool-merge.in -x intltool-update -x intltool-update.in origsrc/osmo-0.1.2/Makefile.am src/osmo-0.1.2/Makefile.am
+--- origsrc/osmo-0.1.2/Makefile.am	2007-11-17 09:27:36.000000000 -0600
++++ src/osmo-0.1.2/Makefile.am	2007-11-17 22:44:11.671875000 -0600
+@@ -1,5 +1,4 @@
+ SUBDIRS = src po
+-ACLOCAL_AMFLAGS = -I m4
+ 
+ pixmapdir = $(datadir)/pixmaps
+ pixmap_DATA = osmo.svg osmo.png
+diff -urN -x CYGWIN-PATCHES -x 'aclocal.m4*' -x autom4te.cache -x config.cache -x config.log -x config.status -x config.h -x config.h.in -x ABOUT-NLS -x Makefile.in.in -x Makevars.template -x '*SlackBuild*' -x '*.egg-info' -x '*.class' -x '*.pyc' -x '*.mo' -x '*.gmo' -x '*.orig' -x '*.rej' -x '*.spec' -x '*.temp' -x '*~' -x '*.stackdump' -x COPYING -x INSTALL -x compile -x config-ml.in -x config.guess -x config.sub -x depcomp -x elisp-comp -x install-sh -x ltmain.sh -x mdate-sh -x missing -x mkinstalldirs -x py-compile -x symlink-tree -x texinfo.tex -x ylwrap -x config.rpath -x Makefile.in -x makefile.in -x configure -x omf.make -x xmldocs.make -x gnome-doc-utils.make -x gnome-doc-utils.m4 -x intltool.m4 -x intltool-extract -x intltool-extract.in -x intltool-merge -x intltool-merge.in -x intltool-update -x intltool-update.in origsrc/osmo-0.1.2/po/Makefile.am src/osmo-0.1.2/po/Makefile.am
+--- origsrc/osmo-0.1.2/po/Makefile.am	2007-11-17 09:27:36.000000000 -0600
++++ src/osmo-0.1.2/po/Makefile.am	2007-11-17 22:59:03.250000000 -0600
+@@ -15,7 +15,7 @@
+ all: $(DOMAIN).pot $(POFILES) $(MOFILES)
+ 
+ %.mo: skip
+-	@po=$(@:.mo=.po); if test $$po -nt $@ ; then $(MSGFMT) -c --statistics $$po -o $@; echo "$@ updated."; fi
++	@po=$(@:.mo=.po); if test $(srcdir)/$$po -nt $@ ; then $(MSGFMT) -c --statistics $(srcdir)/$$po -o $@; echo "$@ updated."; fi
+ 
+ %.po: $(DOMAIN).pot
+ 	$(MSGMERGE) $@ $< -o $@.in && mv $@.in $@

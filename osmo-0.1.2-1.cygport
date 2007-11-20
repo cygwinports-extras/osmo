@@ -1,0 +1,3 @@
+DESCRIPTION="GTK+ PIM application"
+HOMEPAGE="http://clay.ll.pl/osmo/"
+SRC_URI="mirror://sourceforge/osmo-pim/${P}.tar.gz"
